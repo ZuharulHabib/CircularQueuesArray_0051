@@ -8,7 +8,7 @@ class Queues {
 
 public:
 	Queues() {
-		FRONT = -1; 
+		FRONT = -1;
 		REAR = -1;
 	}
 
@@ -17,7 +17,7 @@ public:
 		cout << "Enter a number: ";
 		cin >> num;
 		cout << endl;
-		 
+
 		// Cek apakah antrian penuh
 		if ((FRONT == 0 && REAR == max - 1) || (FRONT == REAR + 1)) {
 			cout << "\nQueue overFlow\n";
@@ -39,4 +39,27 @@ public:
 		queue_array[REAR] = num;
 	}
 
+	void remove() {
+		//Cek apakah antrian kosong
+		if (FRONT == -1) {
+			cout << "Queue underflow\n";
+			return;
+		}
+		cout << "\nThe element deleted from the queue is: " << queue_array[FRONT] << "\n";
+
+		//Cek JIka antrian hanya memiliki satu element
+		if (FRONT == REAR) {
+			FRONT = -1;
+			REAR = -1;
+		}
+		else {
+			//JIka elemen yang di hapus berada di posisi terakhir array, kemballi ke awal array
+			if (FRONT == max - 1)
+				FRONT = 0;
+			else
+				FRONT = FRONT + 1;
+		}
+	}
+
+	
 }
